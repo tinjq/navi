@@ -1,0 +1,77 @@
+var data = {
+    "data": [
+        {
+            "title": "默认分类",
+            "sites": [
+                {
+                    "title": "有道词典",
+                    "href": "https://www.youdao.com/",
+                    "icon": "https://shared-https.ydstatic.com/images/favicon.ico",
+                    "remark": "词典",
+                    "description": "有道"
+                },
+                {
+                    "title": "GitHub",
+                    "href": "https://github.com/",
+                    "icon": "https://github.githubassets.com/favicons/favicon.png",
+                    "remark": "GitHub 开源社区"
+                }
+            ]
+        },
+        {
+            "title": "分类1",
+            "children": [
+                {
+                    "title": "分类101",
+                    "sites": [
+                        {
+                            "title": "GitHub",
+                            "href": "https://github.com/",
+                            "icon": "https://github.githubassets.com/favicons/favicon.png",
+                            "remark": "GitHub 开源社区",
+                            "description": ""
+                        },
+                        {
+                            "title": "GitCode",
+                            "href": "https://gitcode.com/",
+                            "icon": "",
+                            "remark": "中文开发者代码社区",
+                            "description": ""
+                        },
+                        {
+                            "title": "码云",
+                            "href": "https://gitee.com/",
+                            "icon": "https://gitee.com/favicon.ico",
+                            "remark": "gitee",
+                            "description": "基于 Git 的代码托管和研发协作平台"
+                        }
+                    ]
+                },
+                {
+                    "title": "分类103"
+                },
+                {
+                    "title": "分类104"
+                }
+            ],
+            "sites": [
+                {
+                    "title": "GitLab",
+                    "href": "https://gitlab.com/",
+                    "icon": "https://gitlab.com/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png",
+                    "remark": "Git"
+                }
+            ]
+        },
+        {
+            "title": "分类4"
+        },
+        {
+            "title": "分类5"
+        }
+    ],
+    "settings": {
+        "showEmptyCategory": false,
+        "crypto": false
+    }
+}

@@ -1,0 +1,7 @@
+var data = {
+    "data": "U2FsdGVkX19rGpEvVYGXiW0EoPQNJNAXCK/G8smj5mrjjoPzMu/LUttEmrWuTro4KBGJDgR/bLMFNDul5Y2UahJ0e1gMJsDmizHf0TnVbEK5miQX72WH/qOXEvLwb7W9NeLgo1Lg4Y/vE3QTLFxl2dJ1cR1VTL/xGPV/6/E2+T0mNvUtuKK2TAM9FEHFtwgmdewPueRNi5OPpZoKvFULcsGYxaaCVjO4J8jL+FkWNXaObD8qa00czO7B5XpdfuaQ6mbKf8l1JBSuxtQsxF4M1t5+iJtloFjDxX7DJtTMM8wqCtRfU93XYwQ4oX1X/REwy4cjsnRmXLUubv09wwYpFzXXYwHXqCitwnsfTXvfxwOLPyUvZ+6vcejv/12bpZkVfArIl8Jyr6JQ+ryB1DJmf4UAPdAPHd8xt1t/J35/ToAFEyojId8MYmNdrYD5MYJR8HyJePMHMIsFwdIHySxUyFhoevGnSo8Q2Qen07tJg/B5+3eGGsQCYqFNSYu61JxehpX9llZAVfgXZp7+AJfXVKAuMhgkutW3sXsVeb807V6y+Jky2Og2SAQ0K+CBORkv219hrH5NdcwezC2MrNHoCwbR3pz61ZYNHcVx2GMbq+SLHqrYkqj+xAtjJm01wPc1",
+    "settings": {
+        "showEmptyCategory": true,
+        "crypto": true
+    }
+}

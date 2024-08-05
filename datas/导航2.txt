@@ -1,0 +1,59 @@
+var data = {
+    "data": [
+        {
+            "title": "默认",
+            "sites": [
+                {
+                    "title": "Educated",
+                    "remark": "描述支持 html",
+                    "description": "<img src=\"https://img1.doubanio.com/view/subject/s/public/s29745220.jpg\">"
+                }
+            ]
+        },
+        {
+            "title": "影视",
+            "children": [
+                {
+                    "title": "短视频",
+                    "sites": [
+                        {
+                            "title": "哔哩哔哩",
+                            "href": "https://www.bilibili.com/",
+                            "icon": "https://i0.hdslb.com/bfs/static/jinkela/long/images/favicon.ico",
+                            "remark": "b站",
+                            "description": "弹幕短视频"
+                        },
+                        {
+                            "title": "抖音",
+                            "href": "https://www.douyin.com/",
+                            "icon": "https://p-pc-weboff.byteimg.com/tos-cn-i-9r5gewecjs/favicon.png",
+                            "remark": "抖音-记录美好生活"
+                        }
+                    ]
+                },
+                {
+                    "title": "动漫",
+                    "sites": [
+                        {
+                            "title": "动漫蛋",
+                            "href": "https://www.dmdan.cc/",
+                            "icon": "https://cdn.jsdelivr.net/gh/zkk7/jsku@master/statics/img/favicon.ico",
+                            "remark": "专注动漫"
+                        }
+                    ]
+                }
+            ],
+            "sites": [
+                {
+                    "title": "优酷",
+                    "href": "https://youku.com/",
+                    "remark": "影视剧"
+                }
+            ]
+        }
+    ],
+    "settings": {
+        "showEmptyCategory": true,
+        "crypto": false
+    }
+}
