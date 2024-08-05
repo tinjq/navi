@@ -4,6 +4,27 @@ var data = {
             "title": "默认分类",
             "sites": [
                 {
+                    "title": "导航2",
+                    "href": "?=导航2",
+                    "icon": "",
+                    "remark": "另一个导航页",
+                    "description": "另打开一个页面，复制网址，后面加上\"?=导航页名\"<br>页面添加数据后保存"
+                },
+                {
+                    "title": "账号记录",
+                    "href": "?=账号记录",
+                    "icon": "",
+                    "remark": "还可以记录账号密码，示例密码：123456",
+                    "description": "<span style=\"color:red\">账密当然要加密保存啦</span><br>示例密码：123456"
+                },
+                {
+                    "title": "Educated",
+                    "href": "",
+                    "icon": "https://img1.doubanio.com/view/subject/s/public/s29745220.jpg",
+                    "remark": "弹出支持 html",
+                    "description": "<img src=\"https://img1.doubanio.com/view/subject/s/public/s29745220.jpg\">"
+                },
+                {
                     "title": "有道词典",
                     "href": "https://www.youdao.com/",
                     "icon": "https://shared-https.ydstatic.com/images/favicon.ico",
