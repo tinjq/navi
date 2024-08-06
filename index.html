@@ -81,12 +81,12 @@
                                     <div class="site-card" @mouseenter="showTip($event)" @click="clickCard(site)"
                                         @mouseleave="hideTip" :tip-content="tooltipContent(site)" tip-placement="bottom">
                                         <img v-if="site.icon && site.icon.length > 0" :src="site.icon" loading="lazy">
-                                        <div>
+                                        <div v-if="(site.title && site.title.length > 0) || (site.remark && site.title.remark > 0)">
                                             <p class="nowrap-ellipsis"><strong>{{site.title}}</strong></p>
                                             <p class="nowrap-ellipsis">{{site.remark}}</p>
                                         </div>
                                     </div>
-                                    <div v-if="controlData.editModel" class="edit-icons" @click="event.stopPropagation()">
+                                    <div v-if="controlData.editModel" class="edit-icons">
                                         <i class="iconfont icon-edit" @click="editSite($event, true, false, true, i, j, k)"></i>
                                         <i class="iconfont icon-delete" @click="editDelete(i, j, k)"></i>
                                     </div>
@@ -158,7 +158,7 @@
                 <div class="popup editForm" onclick="event.stopPropagation()">
                     <div>标题：<input type="text" v-model="editData.title"></div>
                     <div v-if="editFlag.info">链接：<input type="text" v-model="editData.href"></div>
-                    <div v-if="editFlag.info">图片：<input type="text" v-model="editData.icon"></div>
+                    <div v-if="editFlag.info">图片：<input type="text" v-model="editData.icon" placeholder="图片地址"></div>
                     <div v-if="editFlag.info">备注：<input type="text" v-model="editData.remark"></div>
                     <div v-if="editFlag.info">描述：<input type="text" v-model="editData.description"></div>
                     <div class="btns">
@@ -187,8 +187,8 @@
     <script src="assets/js/floating-ui-dom-1.6.8.js"></script>
     <script src="assets/js/vue.global.prod.js"></script>
     <script src="assets/js/crypto-js.min.js"></script>
-    <script src="assets/js/zzz.js"></script>
-    <script src="assets/js/zzz-nav.js" id="zzz-nav"></script>
+    <script src="assets/js/nav-common.js"></script>
+    <script src="assets/js/nav.js"></script>
 </body>
 
 </html>

@@ -10,6 +10,7 @@ body {
 
 html, body, #app {
     height: 100%;
+    overflow: hidden;
 }
 
 html {
@@ -159,13 +160,18 @@ main section h4 {
     border: 1px solid transparent;
     line-height: 1.25rem;
     display: flex;
+    align-items: center;
     cursor: pointer;
 }
 
-.site-card>img {
-    max-width: 2rem;
-    max-height: 2rem;
-    margin: auto 0.5rem auto 0;
+.site-card>img:has(+ div) {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+}
+
+.site-card>img:only-child {
+    width: 100%;
 }
 
 .site-card>div {
@@ -282,8 +288,10 @@ main section h4 {
     text-align: right;
 }
 
+/* tooltip start */
 #tooltip {
     width: max-content;
+    max-width: 35%;
     position: absolute;
     top: 0;
     left: 0;
@@ -295,13 +303,14 @@ main section h4 {
     font-size: 90%;
 }
 
-#arrow {
+#tooltip>#arrow {
     position: absolute;
     background: #222;
     width: 8px;
     height: 8px;
     transform: rotate(45deg);
 }
+/* tooltip end */
 
 @media screen and (max-width:75rem) {
     .site-cards>div {

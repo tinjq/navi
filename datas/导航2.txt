@@ -5,8 +5,10 @@ var data = {
             "sites": [
                 {
                     "title": "Educated",
-                    "remark": "描述支持 html",
-                    "description": "<img src=\"https://img1.doubanio.com/view/subject/s/public/s29745220.jpg\">"
+                    "remark": "A Memoir",
+                    "description": "<img src=\"https://m.media-amazon.com/images/I/419Wd4akFKL._SY445_SX342_.jpg\">",
+                    "href": "https://www.amazon.com/Educated/dp/1984854852",
+                    "icon": "https://m.media-amazon.com/images/I/419Wd4akFKL._SY445_SX342_.jpg"
                 }
             ]
         },
