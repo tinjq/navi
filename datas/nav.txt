@@ -23,6 +23,13 @@ var data = {
                     "icon": "datas/tinjq/images/dashang_wx.jpg",
                     "remark": "弹出支持 html",
                     "description": "扫码打赏我，给我动力<br>微信：<br><img width=\"150\" src=\"datas/tinjq/images/dashang_wx.jpg\"><br>支付宝：<br><img width=\"150\" src=\"datas/tinjq/images/dashang_zfb.jpg\">"
+                },
+                {
+                    "title": "给我留言",
+                    "href": "",
+                    "icon": "datas/tinjq/images/tintour.jpg",
+                    "remark": "微信公众号：tintour",
+                    "description": "个人订阅号：<br><img style=\"max-width:100%\" src=\"datas/tinjq/images/tintour.jpg\">"
                 }
             ]
         },
@@ -106,6 +113,7 @@ var data = {
     ],
     "settings": {
         "showEmptyCategory": true,
-        "crypto": false
+        "crypto": false,
+        "cardWidth": 0
     }
 }

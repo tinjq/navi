@@ -14,11 +14,11 @@ const script = document.createElement('script')
 script.src = `datas/${filename}.txt`
 script.onload = () => {
     loadDataSuccess(data)
-    // document.title = filename
+    document.title = filename + ' - 奈未导航'
 }
 script.onerror = (err) => {
     loadDataSuccess(null)
-    // document.title = filename
+    document.title = filename + ' - 奈未导航'
 }
 document.head.appendChild(script);
 
@@ -30,6 +30,8 @@ function loadDataSuccess(data) {
     if (!data.settings) {
         data.settings = { showEmptyCategory: true, crypto: false }
     }
+
+    handleDataKey(data.data)
 
     if (data.settings.crypto) {
         const marsk = document.querySelector('.marsk.confirm-pass')
@@ -124,9 +126,10 @@ function vue(data, decryptData, password) {
 
     function getNewSite() {
         if (editFlag.info) {
-            return { title: editData.title, href: editData.href, icon: editData.icon, remark: editData.remark, description: editData.description }
+            return { title: editData.title, href: editData.href, icon: editData.icon, remark: editData.remark, 
+                description: editData.description, key: Date.now() }
         } else {
-            return { title: editData.title }
+            return { title: editData.title, key: Date.now() }
         }
     }
 
@@ -264,7 +267,7 @@ function vue(data, decryptData, password) {
                 saveData: function () {
                     if (settings.crypto && controlData.password && controlData.password.length > 0) {
                         try {
-                            data.data = encrypt(JSON.stringify(toRaw(items)), controlData.password)
+                            data.data = encrypt(JSON.stringify(toRaw(items), stringifyReplacer), controlData.password)
                         } catch (error) {
                             console.log('encrypt error', error)
                             alert('encrypt error:' + error)
@@ -384,7 +387,7 @@ function vue(data, decryptData, password) {
     }
 
     function save2Txt(data) {
-        let saveContent = 'var data = ' + JSON.stringify(data, null, 4)
+        let saveContent = 'var data = ' + JSON.stringify(data, stringifyReplacer, 4)
         saveTxt(filename, saveContent, () => {
             console.log('save file success')
             editing = false
@@ -411,3 +414,38 @@ window.addEventListener('beforeunload', (event) => {
         event.preventDefault();
     }
 })
+
+function toTop() {
+    document.querySelector('section').scrollTo({ top: 0 })
+}
+
+function handleDataKey(data) {
+    let now = Date.now()
+    for (let i = 0; i < data.length; i++) {
+        data[i].key = now--
+
+        if (data[i].sites) {
+            for (let j = 0; j < data[i].sites.length; j++) {
+                data[i].sites[j].key = now--
+            }
+        }
+
+        if (data[i].children) {
+            for (let k = 0; k < data[i].children.length; k++) {
+                data[i].children[k].key = now--
+                if (data[i].children[k].sites) {
+                    for (let m = 0; m < data[i].children[k].sites.length; m++) {
+                        data[i].children[k].sites[m].key = now--
+                    }
+                }
+            } 
+        }
+    }
+}
+
+function stringifyReplacer(key, value) {
+    if (key === 'key') {
+        return undefined
+    }
+    return value
+}
