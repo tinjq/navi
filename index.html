@@ -37,6 +37,11 @@
                         </ul>
                     </li>
                 </ul>
+                <ul>
+                    <li><a href="pages/instructions.html" target="_blank">
+                        <i class="iconfont icon-tag no-scale"></i>使用说明
+                    </a></li>
+                </ul>
             </aside>
         </div>
 
@@ -59,7 +64,7 @@
                                 <div class="site-card" @mouseenter="showTip($event)" @mouseleave="hideTip" @click="clickCard(site)"
                                     :tip-content="tooltipContent(site)" tip-placement="bottom">
                                     <img v-if="site.icon && site.icon.length > 0" :src="site.icon" loading="lazy">
-                                    <div>
+                                    <div v-if="(site.title && site.title.length > 0) || (site.remark && site.title.remark > 0)">
                                         <p class="nowrap-ellipsis">{{site.title}}</p>
                                         <p class="nowrap-ellipsis">{{site.remark}}</p>
                                     </div>

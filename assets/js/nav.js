@@ -15,11 +15,11 @@ script.src = `datas/${filepath}.txt`
 const filename = getFileName(filepath)
 script.onload = () => {
     loadDataSuccess(data)
-    document.title = filename + ' - 奈未导航'
+    document.title = '奈未导航 - ' + filename
 }
 script.onerror = (err) => {
     loadDataSuccess(null)
-    document.title = filename + ' - 奈未导航'
+    document.title = '奈未导航 - ' + filename
 }
 document.head.appendChild(script);
 
