@@ -32,8 +32,6 @@ function loadDataSuccess(data) {
         data.settings = { showEmptyCategory: true, crypto: false, full: false }
     }
 
-    handleDataKey(data.data)
-
     if (data.settings.crypto) {
         const marsk = document.querySelector('.marsk.confirm-pass')
         marsk.style.display = 'block'
@@ -73,6 +71,7 @@ function vue(data, decryptData, password) {
     const { createApp, ref, reactive, toRaw } = Vue
     const { computePosition, flip, shift, offset, arrow, } = FloatingUIDOM
 
+    handleDataKey(decryptData || data.data)
     const items = reactive(decryptData || data.data)
     const settings = reactive(data.settings)
     const editFlag = reactive({ info: false, child: false, btns: false })
@@ -145,20 +144,19 @@ function vue(data, decryptData, password) {
                 isShowTip,
                 tipContent,
                 expand: function (e) {
-                    const classList = e.currentTarget.parentNode.classList
+                    const classList = e.currentTarget.parentNode.parentNode.classList
                     const expended = classList.contains('expanded')
                     document.querySelectorAll('aside>ul>li.expanded').forEach(item => item.classList.remove('expanded'))
                     if (!expended) {
                         classList.add('expanded')
                     }
                 },
-                editSite: function (event, info, child, btns, i, j, k) {
+                editSite: function (info, child, btns, i, j, k) {
                     editFlag.info = info
                     editFlag.child = child
                     editFlag.btns = btns
                     populateEditData(i, j, k)
                     controlData.showMask = true
-                    event.stopPropagation()
                 },
                 editUpdate: function () {
                     let current = getCurrent(editData.i, editData.j, editData.k)
@@ -224,7 +222,7 @@ function vue(data, decryptData, password) {
                     controlData.showMask = false
                     editing = true
                 },
-                deleteMenu: function (event, i, j) {
+                deleteMenu: function (i, j) {
                     if (window.confirm('确定删除？')) {
                         if (j === undefined) {
                             if (items.length == 1) {
@@ -237,7 +235,6 @@ function vue(data, decryptData, password) {
                         }
                         editing = true
                     }
-                    event.stopPropagation()
                 },
                 appendChild: function () {
                     let newSite = getNewSite()

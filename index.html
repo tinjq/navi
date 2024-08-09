@@ -19,18 +19,18 @@
             <aside>
                 <ul>
                     <li v-for="(item, i) in items" :key="item.key">
-                        <a :href="'#' + item.key" @click="expand($event)">
-                            <i v-if="controlData.editModel" class="iconfont icon-delete" @click="deleteMenu($event,i)"></i>
-                            <i v-if="controlData.editModel" class="iconfont icon-edit" @click="editSite($event, false, true, true, i)"></i>
+                        <a :href="'#' + item.key">
+                            <i v-if="controlData.editModel" class="iconfont icon-delete" @click="deleteMenu(i)"></i>
+                            <i v-if="controlData.editModel" class="iconfont icon-edit" @click="editSite(false, true, true, i)"></i>
                             <i v-if="!controlData.editModel" class="iconfont icon-tag no-scale"></i>
-                            <span class="title nowrap-ellipsis">{{item.title}}</span>
+                            <span class="title nowrap-ellipsis" @click="expand($event)">{{item.title}}</span>
                             <i v-if="item.children && item.children.length > 0" class="iconfont icon-right no-scale"></i>
                         </a>
                         <ul v-if="item.children && item.children.length > 0">
                             <li v-for="(child, j) in item.children" :key="child.key">
                                 <a :href="'#' + child.key">
-                                    <i v-if="controlData.editModel" class="iconfont icon-delete" @click="deleteMenu($event,i,j)"></i>
-                                    <i v-if="controlData.editModel" class="iconfont icon-edit" @click="editSite($event, false, false, true, i,j)"></i>
+                                    <i v-if="controlData.editModel" class="iconfont icon-delete" @click="deleteMenu(i,j)"></i>
+                                    <i v-if="controlData.editModel" class="iconfont icon-edit" @click="editSite(false, false, true, i,j)"></i>
                                     <span class="title nowrap-ellipsis">{{child.title}}</span>
                                 </a>
                             </li>
@@ -51,7 +51,7 @@
                     <div v-for="(item, i) in items" :key="item.key">
                         <h4 v-if="settings.showEmptyCategory || (item.sites && item.sites.length > 0)" :id="item.key">
                             <i class="iconfont icon-tag no-scale"></i> {{item.title}}
-                            <i v-if="controlData.editModel" class="iconfont icon-add" @click="editSite($event, true, true, false, i)"></i>
+                            <i v-if="controlData.editModel" class="iconfont icon-add" @click="editSite(true, true, false, i)"></i>
                         </h4>
                         <div v-if="item.sites && item.sites.length > 0" class="site-cards">
                             <div v-for="(site, j) in item.sites" :key="site.key" 
@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
                                 <div v-if="controlData.editModel" class="edit-icons">
-                                    <i class="iconfont icon-edit" @click="editSite($event, true, false, true, i, j)"></i>
+                                    <i class="iconfont icon-edit" @click="editSite(true, false, true, i, j)"></i>
                                     <i class="iconfont icon-delete" @click="editDelete(i, j)"></i>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                             <div v-if="settings.showEmptyCategory || (child.sites && child.sites.length > 0)">
                                 <h4 :id="child.key">
                                     <i class="iconfont icon-tag no-scale"></i> {{child.title}}
-                                    <i v-if="controlData.editModel" class="iconfont icon-add" @click="editSite($event, true, true, false, i, j)"></i>
+                                    <i v-if="controlData.editModel" class="iconfont icon-add" @click="editSite(true, true, false, i, j)"></i>
                                 </h4>
                                 <div class="site-cards">
                                     <div v-for="(site, k) in child.sites" :key="site.key" 
@@ -89,7 +89,7 @@
                                             </div>
                                         </div>
                                         <div v-if="controlData.editModel" class="edit-icons">
-                                            <i class="iconfont icon-edit" @click="editSite($event, true, false, true, i, j, k)"></i>
+                                            <i class="iconfont icon-edit" @click="editSite(true, false, true, i, j, k)"></i>
                                             <i class="iconfont icon-delete" @click="editDelete(i, j, k)"></i>
                                         </div>
                                     </div>
@@ -164,7 +164,7 @@
                 </div>
             </div>
 
-            <div class="marsk" style="display: none;" v-show="controlData.showMask" @click="controlData.showMask = false">
+            <div class="marsk" style="display:none;z-index:5" v-show="controlData.showMask" @click="controlData.showMask = false">
                 <div class="popup editForm" onclick="event.stopPropagation()">
                     <div>标题：<input type="text" v-model="editData.title"></div>
                     <div v-if="editFlag.info">链接：<input type="text" v-model="editData.href"></div>
