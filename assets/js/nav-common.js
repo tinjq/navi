@@ -38,6 +38,12 @@ function saveError(error) {
     window.alert("save file faild:" + error)
 }
 
+function getFileName(filepath) {
+    let slashIndex = Math.max(filepath.lastIndexOf('/'), filepath.lastIndexOf('\\'))
+    let dotIndex = filepath.lastIndexOf('.')
+    return filepath.substring(slashIndex + 1, dotIndex < 0 ? filepath.length : dotIndex)
+}
+
 function encrypt(msg, key) {
     return CryptoJS.AES.encrypt(msg, key).toString()
 }

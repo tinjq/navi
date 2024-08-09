@@ -9,9 +9,10 @@ if (!param || !param.includes('=')) {
 } else {
     param = param.split("=")[1].split('#')[0]
 }
-let filename = decodeURI(param)
+const filepath = decodeURI(param)
 const script = document.createElement('script')
-script.src = `datas/${filename}.txt`
+script.src = `datas/${filepath}.txt`
+const filename = getFileName(filepath)
 script.onload = () => {
     loadDataSuccess(data)
     document.title = filename + ' - 奈未导航'
@@ -28,7 +29,7 @@ function loadDataSuccess(data) {
         var data = { data: [{ title: "默认分类" }] }
     }
     if (!data.settings) {
-        data.settings = { showEmptyCategory: true, crypto: false }
+        data.settings = { showEmptyCategory: true, crypto: false, full: false }
     }
 
     handleDataKey(data.data)
@@ -77,7 +78,7 @@ function vue(data, decryptData, password) {
     const editFlag = reactive({ info: false, child: false, btns: false })
     const editData = reactive({ title: '', href: '', icon: '', remark:'', description: '', i: -1, j: -1, k: -1 })
     const controlData = reactive({
-        editModel: false, showMenu: false, showSettings: false, showMask: false,
+        editModel: false, showMenu: false, showSettings: false, showMask: false, full: false,
         showEmptyCategory: data.showEmptyCategory || true, crypto: data.crypto || false, password: password
     })
     const isShowTip = ref(false)
@@ -283,6 +284,9 @@ function vue(data, decryptData, password) {
                         if (controlData.showEmptyCategory !== settings.showEmptyCategory) {
                             controlData.showEmptyCategory = settings.showEmptyCategory
                         }
+                        if (controlData.full !== settings.full) {
+                            controlData.full = settings.full
+                        }
                         if (controlData.crypto !== settings.crypto) {
                             controlData.crypto = settings.crypto
                         }
@@ -293,14 +297,18 @@ function vue(data, decryptData, password) {
                             controlData.cardWidth = settings.cardWidth
                         }
                     }
-                    controlData.showMask = false
                     controlData.showSettings = true
                 },
                 confirmSettings() {
                     controlData.showEmptyCategory = controlData.showEmptyCategory === true || controlData.showEmptyCategory === 'true'
+                    controlData.full = controlData.full === true || controlData.full === 'true'
                     controlData.crypto = controlData.crypto === true || controlData.crypto === 'true'
                     if (settings.showEmptyCategory !== controlData.showEmptyCategory) {
                         settings.showEmptyCategory = controlData.showEmptyCategory
+                        settingsChanged = true
+                    }
+                    if (settings.full !== controlData.full) {
+                        settings.full = controlData.full
                         settingsChanged = true
                     }
                     if (settings.crypto !== controlData.crypto) {

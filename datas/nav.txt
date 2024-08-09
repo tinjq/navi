@@ -8,7 +8,7 @@ var data = {
                     "href": "?=导航2",
                     "icon": "",
                     "remark": "另一个导航页",
-                    "description": "另打开一个页面，复制网址，后面加上\"?=导航页名\"<br>页面添加数据后保存"
+                    "description": "另打开一个页面，复制网址，后面加上\"?=导航页名\"，页面添加数据后保存"
                 },
                 {
                     "title": "账号记录",
@@ -76,7 +76,7 @@ var data = {
                             "title": "",
                             "href": "https://weread.qq.com/web/bookDetail/33332bf05cbba0333b1efb4",
                             "icon": "https://wfqqreader-1252317822.image.myqcloud.com/cover/464/834464/t6_834464.jpg",
-                            "description": "活着 - 余华"
+                            "description": "标题和备注都不填，图片会占满卡片宽度<br>活着 - 余华"
                         },
                         {
                             "title": "",
@@ -86,8 +86,8 @@ var data = {
                         },
                         {
                             "title": "",
-                            "href": "https://weread.qq.com/web/reader/57e324b05d047c57ebe463e",
-                            "icon": "https://cdn.weread.qq.com/weread/cover/32/YueWen_853116/t6_YueWen_853116.jpg",
+                            "href": "https://read.douban.com/ebook/30712317/",
+                            "icon": "https://pic.arkread.com/cover/ebook/f/30712317.1653693675.jpg!cover_default.jpg",
                             "description": "杀死一只知更鸟"
                         }
                     ]
@@ -98,9 +98,16 @@ var data = {
             ],
             "sites": [
                 {
+                    "title": "WebStack.cc",
+                    "href": "?=webstack/webstack",
+                    "icon": "datas/webstack/favicon.png",
+                    "remark": "哈哈，把 webstack.cc 的站点搬过来啦"
+                },
+                {
                     "title": "有道词典",
                     "href": "https://www.youdao.com/",
-                    "icon": "https://shared-https.ydstatic.com/images/favicon.ico"
+                    "icon": "https://shared-https.ydstatic.com/images/favicon.ico",
+                    "remark": "词典"
                 }
             ]
         },
