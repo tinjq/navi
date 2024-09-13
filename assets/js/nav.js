@@ -325,9 +325,7 @@ function vue(data, decryptData, password) {
                     return site.description ? site.description : site.remark ? site.remark : site.title
                 },
                 showTip(event) {
-                    if (timeout) {
-                        clearTimeout(timeout)
-                    }
+					clearTimeout(timeout)
                     const target = event.target
                     tipContent.value = target.getAttribute('tip-content')
                     isShowTip.value = true
@@ -335,17 +333,13 @@ function vue(data, decryptData, password) {
                     showTooltip(target, placement)
                 },
                 hideTip() {
-                    if (timeout) {
-                        clearTimeout(timeout)
-                    }
+					clearTimeout(timeout)
                     timeout = setTimeout(() => {
                         isShowTip.value = false
                     }, 100)
                 },
                 enterTooltip() {
-                    if (timeout) {
-                        clearTimeout(timeout)
-                    }
+					clearTimeout(timeout)
                     isShowTip.value = true
                 },
                 clickCard(site) {

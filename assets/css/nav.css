@@ -25,6 +25,10 @@ a, a:visited, a:link, a:hover {
 	color:#282a2d !important;
 }
 
+[v-cloak] {
+	display: none;
+}
+
 aside {
     position: absolute;
     top: 0;
