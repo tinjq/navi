@@ -1,0 +1,9 @@
+var data = {
+    "data": "U2FsdGVkX19P1Xam8gce9qR29A98xza1rS30i8qNx2/eMkUsbMalrKq9MiXIOj0ZSB6O5G1582vhi/3OVe90sXws2D7InmLUJfR8ZK1Z1wC5nxOZT05OeXtLqnBhxkwAAbDw/flj5ImvBko2OaTQC+GTjPlRZI/BhAtFwgTFClHKls0UJ0ba4sG9lN8HhjkJd3vfNkQhvCx6GAYMZ99h96UXDFG3jm/gaOrPE6MC3cWISRwieSC9os+12ML2ilEy/4dOKvDGui031A7sEtNhlHy42OPEQl73HgAp7/pPlewF0rsSFnFJvPeKM1c+ASEUUTWfuAzbhl3eoOaPlw/N/LXN0vB/uybcIHoxCPcYDyX3vq7laMBHwpHKR2osec+0DQBd3ZWsvZ+icqwLiQw0Riasx747aiaqS3Keyi+xKMMRFNCbqhCzbk3m1TI3cYhz9SE9apr44CZ7Q2xvk60WYcfmhltxTzTZqbPu+BC6i/9viYycJf63r/s0KpY2Uk5OHaZhxWO8qp93173E3n1Zy8d93532sQUxThas82BfUWiZoMKE2LrG+BM2T2LyVsSU7exhjpCCTVi203U6q0j7RO21O2mrVMf3P5XeOaK2Tja5coqTcML518kTGuWFkD4lS2eBT9yeEDRFOBF8QVyrXXaU9u9MY5ixmQpKByUS1mrKhnqifdgu+R6H6N/mRUA5dX4KX4B8pc/WQwUxwplWw6JZoXu6zAxg6fPMo/isoNU8DiC9EvAxwE5gZFhxO3AVsWTyYDS2sOax/g2fw5+f33ulUaBg8vcWi9DduFnLc5k=",
+    "settings": {
+        "showEmptyCategory": true,
+        "crypto": true,
+        "full": false,
+        "rememberPass": true
+    }
+}

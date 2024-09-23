@@ -29,36 +29,53 @@ function loadDataSuccess(data) {
         var data = { data: [{ title: "默认分类" }] }
     }
     if (!data.settings) {
-        data.settings = { showEmptyCategory: true, crypto: false, full: false }
+        data.settings = { showEmptyCategory: true, crypto: false, full: false, rememberPass: false }
     }
 
     if (data.settings.crypto) {
         const marsk = document.querySelector('.marsk.confirm-pass')
-        marsk.style.display = 'block'
         const input = marsk.querySelector('input[type=password]')
-        input.focus()
+        marsk.querySelector('.btn-yes').addEventListener('click', function() {
+            handleCrypto(input.value)
+        })
         input.addEventListener('keydown', function (e) {
             if (e.key === "Enter") {
-                handlePrompt()
+                handleCrypto(this.value)
             }
         })
+
+        let password = null
+        if (data.settings.rememberPass) {
+            password = localStorage.getItem('pass_' + filepath)
+        }
+        if (password) {
+            handleCrypto(password)
+        } else {
+            marsk.style.display = 'block'
+            input.focus()
+        }
     } else {
         vue(data)
     }
 }
 
-function handlePrompt() {
-    const marsk = document.querySelector('.marsk.confirm-pass')
-    const password = marsk.querySelector('input[type=password]').value
+function handleCrypto(password) {
     if (password && password !== '') {
+        const marsk = document.querySelector('.marsk.confirm-pass')
         let decryptData = null
         try {
             decryptData = JSON.parse(decrypt(data.data, password))
         } catch (error) {
+            if (marsk.style.display === 'none') {
+                marsk.style.display = 'block'
+            }
             console.log('密码不正确')
             alert('密码不正确')
         }
         if (decryptData) {
+            if (data.settings.rememberPass && marsk.style.display === 'block') {
+                localStorage.setItem('pass_' + filepath, password)
+            }
             marsk.style.display = 'none'
             vue(data, decryptData, password)
         }
@@ -77,8 +94,9 @@ function vue(data, decryptData, password) {
     const editFlag = reactive({ info: false, child: false, btns: false })
     const editData = reactive({ title: '', href: '', icon: '', remark:'', description: '', i: -1, j: -1, k: -1 })
     const controlData = reactive({
-        editModel: false, showMenu: false, showSettings: false, showMask: false, full: false,
-        showEmptyCategory: data.showEmptyCategory || true, crypto: data.crypto || false, password: password
+        editModel: false, showMenu: false, showSettings: false, showMask: false, full: false, 
+        showEmptyCategory: data.showEmptyCategory || true, crypto: data.crypto || false, password: password,
+        rememberPass: data.rememberPass || false
     })
     const isShowTip = ref(false)
     const tipContent = ref('')
@@ -274,7 +292,7 @@ function vue(data, decryptData, password) {
                     } else {
                         data.data = toRaw(items)
                     }
-                    save2Txt(data)
+                    save2Txt(filename, data)
                 },
                 showSettingsForm() {
                     if (!settingsChanged) {
@@ -290,6 +308,9 @@ function vue(data, decryptData, password) {
                         if (password !== controlData.password) {
                             controlData.password = password
                         }
+                        if (controlData.password !== settings.rememberPass) {
+                            controlData.rememberPass = settings.rememberPass
+                        }
                         if (settings.cardWidth !== controlData.cardWidth) {
                             controlData.cardWidth = settings.cardWidth
                         }
@@ -300,6 +321,7 @@ function vue(data, decryptData, password) {
                     controlData.showEmptyCategory = controlData.showEmptyCategory === true || controlData.showEmptyCategory === 'true'
                     controlData.full = controlData.full === true || controlData.full === 'true'
                     controlData.crypto = controlData.crypto === true || controlData.crypto === 'true'
+                    controlData.rememberPass = controlData.rememberPass === true || controlData.rememberPass === 'true'
                     if (settings.showEmptyCategory !== controlData.showEmptyCategory) {
                         settings.showEmptyCategory = controlData.showEmptyCategory
                         settingsChanged = true
@@ -313,6 +335,10 @@ function vue(data, decryptData, password) {
                         settingsChanged = true
                     }
                     if (settings.crypto && password !== controlData.password) {
+                        settingsChanged = true
+                    }
+                    if (settings.rememberPass !== controlData.rememberPass) {
+                        settings.rememberPass = controlData.rememberPass
                         settingsChanged = true
                     }
                     if (settings.cardWidth !== controlData.cardWidth) {
@@ -385,8 +411,11 @@ function vue(data, decryptData, password) {
         });
     }
 
-    function save2Txt(data) {
+    function save2Txt(filename, data) {
         let saveContent = 'var data = ' + JSON.stringify(data, stringifyReplacer, 4)
+        if (navigator.userAgent.includes('Linux')) {
+            filename = filename + ".txt"
+        }
         saveTxt(filename, saveContent, () => {
             console.log('save file success')
             editing = false
